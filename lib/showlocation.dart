@@ -36,12 +36,13 @@ class _ShowLocationState extends State<ShowLocation> {
     setState(() {
       locationmesaage = "Latitude : $lat\nLongitude: $lng";
       _currentAddress =
-          "Address: ${place.locality}, ${place.postalCode}, ${place.country}";
+          "Address: ${place.name}, ${place.locality}, ${place.postalCode}, ${place.country}";
     });
   }
 
   @override
   void initState() {
+     getCurrentLocation();
     _timeString = _formatDateTime(DateTime.now());
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
     super.initState();
@@ -87,16 +88,16 @@ class _ShowLocationState extends State<ShowLocation> {
                 Text('Time : $_timeString'),
               ],
             ),
-            FlatButton(
-              onPressed: () {
-                getCurrentLocation();
-              },
-              color: Colors.blue[600],
-              child: Text(
-                'GET LOCATION',
-                style: TextStyle(color: Colors.white),
-              ),
-            )
+            // FlatButton(
+            //   onPressed: () {
+            //     getCurrentLocation();
+            //   },
+            //   color: Colors.blue[600],
+            //   child: Text(
+            //     'GET LOCATION',
+            //     style: TextStyle(color: Colors.white),
+            //   ),
+            // )
           ],
         ),
       ),
